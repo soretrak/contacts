@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: contact-backend-server-cluster-ip
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     component: contacts-backend
   ports:
    - port: 8080
      targetPort: 8080
+     nodePort: 30500
