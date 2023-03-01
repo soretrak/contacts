@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: contact-frontend-cluster-ip-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     component: contacts-frontend
   ports:
     - port: 4200
       targetPort: 4200
+      nodePort: 30400
