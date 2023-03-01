@@ -1,10 +1,30 @@
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete  
+  hostPath:
+    path: "/home/devops/mongo/database/data"
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mango-persistent-volume-claim
+ 
 spec:
+  storageClassName: local-storage
   accessModes:
     - ReadWriteOnce
   resources:
-   requests:
-    storage: 128Mi
+    requests:
+      storage: 128Mi
+
